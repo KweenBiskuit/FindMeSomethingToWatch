@@ -4,20 +4,23 @@
 
  use Zend\Mvc\Controller\AbstractActionController;
  use Zend\View\Model\ViewModel;
- use Admin\Model\Serie;         
+ use Admin\Model\Serie;      
+ use Admin\Model\Mood;      
  use Admin\Form\SerieForm; 
  use Admin\Form\SearchSerieForm; 
 
  class AdminController extends AbstractActionController
  {
  	protected $serieTable;
+    protected $moodTable;
 
     public function indexAction()
-     {
+    {
          return new ViewModel(array(
              'series' => $this->getSerieTable()->fetchAll(),
+             'moods' => $this->getMoodTable()->fetchAll()
          ));
-     }
+    }
 
      public function detailsAction()
      {
@@ -155,6 +158,15 @@
              $this->serieTable = $sm->get('Admin\Model\SerieTable');
          }
          return $this->serieTable;
+     }
+
+     public function getMoodTable()
+     {
+         if (!$this->moodTable) {
+             $sm = $this->getServiceLocator();
+             $this->moodTable = $sm->get('Admin\Model\MoodTable');
+         }
+         return $this->moodTable;
      }
 
 

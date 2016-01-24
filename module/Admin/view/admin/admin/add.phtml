@@ -4,6 +4,9 @@
  $form->setAttribute('action', $this->url('admin', array('action' => 'add')));
  $form->prepare();
 
+ // echo "C'est un objet de la classe = " , get_class($this->form);
+ echo $this->type;
+
  echo "<div class='form-add'>";
 
 	 echo $this->form()->openTag($form);
@@ -20,3 +23,9 @@
 	 echo $this->form()->closeTag();
 
  echo "</div>";
+
+
+?>
+
+   <a href="<?php echo $this->url('admin');?>">Back To Admin Index
+ </a>

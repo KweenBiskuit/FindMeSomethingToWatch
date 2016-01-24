@@ -1,11 +1,27 @@
- <p class="admin-button-serie">
-     <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'add'));?> ">Add new serie</a>
-     <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'search'));?> ">Search serie</a>
- </p>
-<!--  <p class="admin-button-user">
-     <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'add'));?> ">Add new user</a>
-     <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'search'));?> ">Search user</a>
- </p> -->
+<div class="admin-controls">
+    <!-- SERIES -->
+     <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownSeries" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Series
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownSeries">
+        <li><a href="<?php echo $this->url('admin', array('action'=>'add', 'type' => 'serie'));?> ">Add new serie</a></li>
+        <li><a href="<?php echo $this->url('admin', array('action'=>'search'));?> ">Search serie</a></li>
+      </ul>
+    </div>
+    <!-- MOODS -->
+     <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownSeries" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Moods
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownSeries">
+        <li><a href="<?php echo $this->url('admin');?>#moods ">List All moods</a></li>
+        <li><a href="<?php echo $this->url('mood', array('action'=>'add', 'type' => 'mood'));?> ">Add new Mood</a></li>
+      </ul>
+    </div>
+</div>
 
 <h1><?php echo "Liste des Series" ?></h1>
  <table class="table">
@@ -32,3 +48,22 @@
  </tr>
  <?php endforeach; ?>
  </table>
+
+
+<hr>
+
+<h2 id="moods">Liste des Moods</h2>
+<div class="moods-list">
+ <?php foreach ($moods as $mood) : ?>
+
+    <p>
+        <a href="<?php echo $this->url('mood',
+             array('action'=>'details', 'id' => $mood->id));?>"><?php echo $this->escapeHtml($mood->nom);?>
+        </a>
+    </p>
+    
+<?php endforeach; ?>
+</div>
+
+  <a href="<?php echo $this->url('admin');?>">Back To Admin Index
+ </a>

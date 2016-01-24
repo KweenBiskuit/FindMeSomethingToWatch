@@ -6,6 +6,8 @@ namespace Admin;
  use Zend\ModuleManager\Feature\ConfigProviderInterface;
  use Admin\Model\Serie;
  use Admin\Model\SerieTable;
+ use Admin\Model\Mood;
+ use Admin\Model\MoodTable;
  use Zend\Db\ResultSet\ResultSet;
  use Zend\Db\TableGateway\TableGateway;
 
@@ -46,6 +48,17 @@ namespace Admin;
                      $resultSetPrototype = new ResultSet();
                      $resultSetPrototype->setArrayObjectPrototype(new Serie());
                      return new TableGateway('serie', $dbAdapter, null, $resultSetPrototype);
+                 },
+                 'Admin\Model\MoodTable' =>  function($sm) {
+                     $tableGateway = $sm->get('MoodTableGateway');
+                     $table = new MoodTable($tableGateway);
+                     return $table;
+                 },
+                 'MoodTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Mood());
+                     return new TableGateway('mood', $dbAdapter, null, $resultSetPrototype);
                  },
              ),
          );

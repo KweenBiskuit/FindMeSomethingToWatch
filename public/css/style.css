@@ -44,7 +44,9 @@ div.container a.brand {
 .navbar-header{
   margin:-10px;
 }
-
+div.admin-controls div{
+  display: inline-block;
+}
 .form-add{
   /*outline:1px solid red;*/
   width:560px;
@@ -63,4 +65,23 @@ div.container a.brand {
 .form-add input[type=submit]{
   width:100px;
   margin:30px 240px;
+}
+.moods-list{
+  text-align: center;
+    margin-top: 20px;
+}
+.moods-list p {
+  display: inline-block;
+  background-color: #83ACA9;
+  border-radius: 5px;
+  color:#fff;
+  padding:10px;
+  margin:5px;
+}
+.moods-list p:hover{
+  background-color: #96C5C2;
+}
+.moods-list p a{
+  color:#fff;
+  text-decoration: none;
 }
