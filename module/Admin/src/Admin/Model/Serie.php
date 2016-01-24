@@ -26,124 +26,125 @@ namespace Admin\Model;
          $this->anneeFin  = (!empty($data['anneeFin'])) ? $data['anneeFin'] : null;
          $this->image  = (!empty($data['image'])) ? $data['image'] : null;
      }
-     
-     //  public function setInputFilter(InputFilterInterface $inputFilter)
-     // {
-     //     throw new \Exception("Not used");
-     // }
 
-     // public function getInputFilter()
-     // {
-     //     if (!$this->inputFilter) {
-     //         $inputFilter = new InputFilter();
+//Gestion du Form     
+     public function setInputFilter(InputFilterInterface $inputFilter)
+     {
+         throw new \Exception("Not used");
+     }
 
-     //         $inputFilter->add(array(
-     //             'name'     => 'id',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'Int'),
-     //             ),
-     //         ));
+     public function getInputFilter()
+     {
+         if (!$this->inputFilter) {
+             $inputFilter = new InputFilter();
 
-     //         $inputFilter->add(array(
-     //             'name'     => 'titre',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'StripTags'),
-     //                 array('name' => 'StringTrim'),
-     //             ),
-     //             'validators' => array(
-     //                 array(
-     //                     'name'    => 'StringLength',
-     //                     'options' => array(
-     //                         'encoding' => 'UTF-8',
-     //                         'min'      => 1,
-     //                         'max'      => 200,
-     //                     ),
-     //                 ),
-     //             ),
-     //         ));
+             $inputFilter->add(array(
+                 'name'     => 'id',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'Int'),
+                 ),
+             ));
 
-     //         $inputFilter->add(array(
-     //             'name'     => 'synopsys',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'StripTags'),
-     //                 array('name' => 'StringTrim'),
-     //             ),
-     //             'validators' => array(
-     //                 array(
-     //                     'name'    => 'StringLength',
-     //                     'options' => array(
-     //                         'encoding' => 'UTF-8',
-     //                         'min'      => 1,
-     //                         'max'      => 800,
-     //                     ),
-     //                 ),
-     //             ),
-     //         ));
+             $inputFilter->add(array(
+                 'name'     => 'titre',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'StripTags'),
+                     array('name' => 'StringTrim'),
+                 ),
+                 'validators' => array(
+                     array(
+                         'name'    => 'StringLength',
+                         'options' => array(
+                             'encoding' => 'UTF-8',
+                             'min'      => 1,
+                             'max'      => 200,
+                         ),
+                     ),
+                 ),
+             ));
+
+             $inputFilter->add(array(
+                 'name'     => 'synopsys',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'StripTags'),
+                     array('name' => 'StringTrim'),
+                 ),
+                 'validators' => array(
+                     array(
+                         'name'    => 'StringLength',
+                         'options' => array(
+                             'encoding' => 'UTF-8',
+                             'min'      => 1,
+                             'max'      => 800,
+                         ),
+                     ),
+                 ),
+             ));
                  
-     //            $inputFilter->add(array(
-     //             'name'     => 'anneeDebut',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'StripTags'),
-     //                 array('name' => 'StringTrim'),
-     //             ),
-     //             'validators' => array(
-     //                 array(
-     //                     'name'    => 'StringLength',
-     //                     'options' => array(
-     //                         'encoding' => 'UTF-8',
-     //                         'min'      => 1,
-     //                         'max'      => 4,
-     //                     ),
-     //                 ),
-     //             ),
-     //        ));
+                $inputFilter->add(array(
+                 'name'     => 'anneeDebut',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'StripTags'),
+                     array('name' => 'StringTrim'),
+                 ),
+                 'validators' => array(
+                     array(
+                         'name'    => 'StringLength',
+                         'options' => array(
+                             'encoding' => 'UTF-8',
+                             'min'      => 1,
+                             'max'      => 4,
+                         ),
+                     ),
+                 ),
+            ));
                     
-     //            $inputFilter->add(array(
-     //             'name'     => 'anneeFin',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'StripTags'),
-     //                 array('name' => 'StringTrim'),
-     //             ),
-     //             'validators' => array(
-     //                 array(
-     //                     'name'    => 'StringLength',
-     //                     'options' => array(
-     //                         'encoding' => 'UTF-8',
-     //                         'min'      => 1,
-     //                         'max'      => 4,
-     //                     ),
-     //                 ),
-     //             ),
-     //        ));
+                $inputFilter->add(array(
+                 'name'     => 'anneeFin',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'StripTags'),
+                     array('name' => 'StringTrim'),
+                 ),
+                 'validators' => array(
+                     array(
+                         'name'    => 'StringLength',
+                         'options' => array(
+                             'encoding' => 'UTF-8',
+                             'min'      => 1,
+                             'max'      => 4,
+                         ),
+                     ),
+                 ),
+            ));
                     
-     //         $inputFilter->add(array(
-     //             'name'     => 'image',
-     //             'required' => true,
-     //             'filters'  => array(
-     //                 array('name' => 'StripTags'),
-     //                 array('name' => 'StringTrim'),
-     //             ),
-     //             'validators' => array(
-     //                 array(
-     //                     'name'    => 'StringLength',
-     //                     'options' => array(
-     //                         'encoding' => 'UTF-8',
-     //                         'min'      => 1,
-     //                         'max'      => 100,
-     //                     ),
-     //                 ),
-     //             ),
+             $inputFilter->add(array(
+                 'name'     => 'image',
+                 'required' => true,
+                 'filters'  => array(
+                     array('name' => 'StripTags'),
+                     array('name' => 'StringTrim'),
+                 ),
+                 'validators' => array(
+                     array(
+                         'name'    => 'StringLength',
+                         'options' => array(
+                             'encoding' => 'UTF-8',
+                             'min'      => 1,
+                             'max'      => 100,
+                         ),
+                     ),
+                 ),
                     
-     //         ));
+             ));
 
-     //         $this->inputFilter = $inputFilter;
-     //     }
+             $this->inputFilter = $inputFilter;
+         }
 
-     //     return $this->inputFilter;
-     // }
+         return $this->inputFilter;
+     }
  }

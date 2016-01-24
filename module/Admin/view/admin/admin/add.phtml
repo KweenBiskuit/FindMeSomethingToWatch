@@ -1,0 +1,22 @@
+
+ <h1 class="text-center"> Add New Serie</h1>
+ <?php
+ $form->setAttribute('action', $this->url('admin', array('action' => 'add')));
+ $form->prepare();
+
+ echo "<div class='form-add'>";
+
+	 echo $this->form()->openTag($form);
+
+	 echo $this->formHidden($form->get('id'));
+	 echo $this->formRow($form->get('titre')) . "<br>";
+	 echo "<label>Synopsys</label><br/>";
+	 echo $this->formTextarea($form->get('synopsys')). "<br>";
+	 echo $this->formRow($form->get('anneeDebut')). "<br>";
+	 echo $this->formRow($form->get('anneeFin')). "<br>";
+	 echo $this->formRow($form->get('image')). "<br><br>";
+	 echo $this->formSubmit($form->get('submit'));
+
+	 echo $this->form()->closeTag();
+
+ echo "</div>";
