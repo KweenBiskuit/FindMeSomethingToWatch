@@ -6,6 +6,7 @@
  use Zend\View\Model\ViewModel;
  use Admin\Model\Serie;         
  use Admin\Form\SerieForm; 
+ use Admin\Form\SearchSerieForm; 
 
  class AdminController extends AbstractActionController
  {
@@ -16,6 +17,23 @@
          return new ViewModel(array(
              'series' => $this->getSerieTable()->fetchAll(),
          ));
+     }
+
+     public function detailsAction()
+     {
+        $id = (int) $this->params()->fromRoute('id', 0);      
+        try {
+             $serie = $this->getSerieTable()->getSerie($id);
+        }
+        catch (\Exception $ex) {
+             return $this->redirect()->toRoute('admin', array(
+                 'action' => 'index'
+             ));
+        }
+
+        return array(
+             'serie' => $serie,
+        );
      }
 
     public function addAction()
@@ -40,6 +58,26 @@
          return array('form' => $form);
     }
 
+    public function searchAction(){
+        $form = new SearchSerieForm();
+        $form->get('submit')->setValue('Search');
+
+        if ($this->getRequest()->isPost()) {          
+
+              $titre = $this->getRequest()->getPost('titre');
+
+              echo "<p> Le titre est " . $titre;
+              $serieSearch = $this->getSerieTable()->getSerieTitre($titre);
+              if ($serieSearch) {
+                // var_dump($serieSearch->id);
+                  return $this->redirect()->toRoute('admin', array(
+                    'action' => 'details',
+                    'id' => $serieSearch->id
+                  ));
+              }
+        }
+        return array('form' => $form);
+    }
 
     public function editAction()
      {

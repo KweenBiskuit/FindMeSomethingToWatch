@@ -2,10 +2,10 @@
      <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'add'));?> ">Add new serie</a>
      <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'search'));?> ">Search serie</a>
  </p>
- <p class="admin-button-user">
+<!--  <p class="admin-button-user">
      <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'add'));?> ">Add new user</a>
      <a class="btn btn-primary" role="button" href="<?php echo $this->url('admin', array('action'=>'search'));?> ">Search user</a>
- </p>
+ </p> -->
 
 <h1><?php echo "Liste des Series" ?></h1>
  <table class="table">
@@ -22,6 +22,8 @@
      <td><?php echo $this->escapeHtml($serie->anneeFin);?></td>
      <td><?php echo $this->escapeHtml($serie->image);?></td>
      <td>
+        <a href="<?php echo $this->url('admin',
+             array('action'=>'details', 'id' => $serie->id));?>">Details</a>
          <a href="<?php echo $this->url('admin',
              array('action'=>'edit', 'id' => $serie->id));?>">Edit</a>
          <a href="<?php echo $this->url('admin',

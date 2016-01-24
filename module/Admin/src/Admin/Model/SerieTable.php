@@ -3,6 +3,7 @@
 namespace Admin\Model;
 
  use Zend\Db\TableGateway\TableGateway;
+ use Zend\Db\Sql\Where;
 
  class SerieTable
  {
@@ -28,6 +29,24 @@ namespace Admin\Model;
              throw new \Exception("Could not find row $id");
          }
          return $row;
+     }
+
+     public function getSerieTitre($titre)
+     {
+         $titre  = (string) $titre;
+
+         $where = new Where();    
+         $where->like("titre", "%".$titre."%");
+
+         $rowset = $this->tableGateway->select($where);
+
+         $row = $rowset->current();
+         if ($row) {
+             return $row;
+         }
+         else{
+          throw new \Exception("Could not find serie $titre");
+         }
      }
 
      public function saveSerie(Serie $serie)
