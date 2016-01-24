@@ -27,6 +27,12 @@ namespace Admin\Model;
          $this->image  = (!empty($data['image'])) ? $data['image'] : null;
      }
 
+      public function getArrayCopy()
+     {
+         return get_object_vars($this);
+     }
+
+
 //Gestion du Form     
      public function setInputFilter(InputFilterInterface $inputFilter)
      {

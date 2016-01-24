@@ -41,8 +41,47 @@
     }
 
 
-     public function editAction()
+    public function editAction()
      {
+         $id = (int) $this->params()->fromRoute('id', 0);
+         if (!$id) {
+             return $this->redirect()->toRoute('admin', array(
+                 'action' => 'add'
+             ));
+         }
+
+         // Get the Album with the specified id.  An exception is thrown
+         // if it cannot be found, in which case go to the index page.
+         try {
+             $serie = $this->getSerieTable()->getSerie($id);
+         }
+         catch (\Exception $ex) {
+             return $this->redirect()->toRoute('admin', array(
+                 'action' => 'index'
+             ));
+         }
+
+         $form  = new SerieForm();
+         $form->bind($serie);
+         $form->get('submit')->setAttribute('value', 'Edit');
+
+         $request = $this->getRequest();
+         if ($request->isPost()) {
+             $form->setInputFilter($serie->getInputFilter());
+             $form->setData($request->getPost());
+
+             if ($form->isValid()) {
+                 $this->getSerieTable()->saveSerie($serie);
+
+                 // Redirect to list of albums
+                 return $this->redirect()->toRoute('admin');
+             }
+         }
+
+         return array(
+             'id' => $id,
+             'form' => $form,
+         );
      }
 
      public function deleteAction()
